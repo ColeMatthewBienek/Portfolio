@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ReactDOM } from "react-dom";
-import { ChakraProvider } from "@chakra-ui/react";
 import { createRoot } from "react-dom/client";
 import App from "./src/app.jsx";
 
@@ -14,8 +13,6 @@ const root = createRoot(container);
 // the render method actually will insert our app into the DOM (which will cause it to render)
 root.render(
   <BrowserRouter>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <App />
   </BrowserRouter>
 );

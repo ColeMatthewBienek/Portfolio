@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import {
   Stack,
@@ -10,6 +10,18 @@ import {
   Link,
   ExternalLinkIcon,
 } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/color-mode";
+
+function ToggleMode() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  return (
+    <header>
+      <Button onClick={toggleColorMode}>
+        Toggle Mode {colorMode === "light" ? "Dark" : "Light"}
+      </Button>
+    </header>
+  );
+}
 
 export default function Home() {
   return (
@@ -28,6 +40,7 @@ export default function Home() {
         px={useBreakpointValue({ base: 4, md: 8 })}
         bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
+        <ToggleMode />
         <Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
           <Text
             color={"white"}
