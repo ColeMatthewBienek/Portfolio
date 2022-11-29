@@ -6,10 +6,7 @@ const appTheme = {
   },
   styles: {
     global: {
-      "html, body": {
-        color: "gray.300",
-        lineHeight: "tall",
-      },
+      "html, body": {},
     },
   },
 };

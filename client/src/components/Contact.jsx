@@ -17,12 +17,59 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
 import { MdEmail, MdOutlineEmail } from "react-icons/md";
+import {
+  githubProfile,
+  myEmail,
+  linkedIn,
+  serviceKey,
+  templateId,
+  emailPublicKey,
+} from "../../../config.js";
+import emailjs from "emailjs-com";
 
 export default function Contact() {
-  const { hasCopied, onCopy } = useClipboard("example@example.com");
+  const { hasCopied, onCopy } = useClipboard(myEmail);
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (event) => {
+    const senderName = event.target.name;
+    const fieldValue = event.target.value;
+    setValues({
+      ...values,
+      [senderName]: fieldValue,
+    });
+  };
+  const handleEmailSend = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(serviceKey, templateId, values, emailPublicKey)
+      .then((response) => {
+        console.log("Success ", response);
+        setValues({
+          name: "",
+          email: "",
+          message: "",
+        });
+        setStatus("Success");
+      })
+      .catch(console.log);
+  };
+
+  useEffect(() => {
+    if (status === "Success") {
+      setTimeout(() => {
+        setStatus("");
+      }, 3000);
+    }
+  });
 
   return (
     <Flex
@@ -39,15 +86,6 @@ export default function Contact() {
       >
         <Box>
           <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
-            <Heading
-              fontSize={{
-                base: "4xl",
-                md: "5xl",
-              }}
-            >
-              Get in Touch
-            </Heading>
-
             <Stack
               spacing={{ base: 4, md: 8, lg: 20 }}
               direction={{ base: "column", md: "row" }}
@@ -77,7 +115,7 @@ export default function Contact() {
                   />
                 </Tooltip>
 
-                <Link href="#">
+                <Link href={githubProfile}>
                   <IconButton
                     aria-label="github"
                     variant="ghost"
@@ -92,21 +130,7 @@ export default function Contact() {
                   />
                 </Link>
 
-                <Link href="#">
-                  <IconButton
-                    aria-label="twitter"
-                    variant="ghost"
-                    size="lg"
-                    icon={<BsTwitter size="28px" />}
-                    _hover={{
-                      bg: "blue.500",
-                      color: useColorModeValue("white", "gray.700"),
-                    }}
-                    isRound
-                  />
-                </Link>
-
-                <Link href="#">
+                <Link href={linkedIn}>
                   <IconButton
                     aria-label="linkedin"
                     variant="ghost"
@@ -129,12 +153,26 @@ export default function Contact() {
                 shadow="base"
               >
                 <VStack spacing={5}>
+                  <Heading
+                    fontSize={{
+                      base: "4xl",
+                      md: "5xl",
+                    }}
+                  >
+                    Contact
+                  </Heading>
                   <FormControl isRequired>
                     <FormLabel>Name</FormLabel>
 
                     <InputGroup>
                       <InputLeftElement children={<BsPerson />} />
-                      <Input type="text" name="name" placeholder="Your Name" />
+                      <Input
+                        type="text"
+                        onChange={handleChange}
+                        value={values.name}
+                        name="name"
+                        placeholder="Your Name"
+                      />
                     </InputGroup>
                   </FormControl>
 
@@ -144,9 +182,11 @@ export default function Contact() {
                     <InputGroup>
                       <InputLeftElement children={<MdOutlineEmail />} />
                       <Input
+                        onChange={handleChange}
                         type="email"
                         name="email"
                         placeholder="Your Email"
+                        value={values.email}
                       />
                     </InputGroup>
                   </FormControl>
@@ -155,14 +195,17 @@ export default function Contact() {
                     <FormLabel>Message</FormLabel>
 
                     <Textarea
+                      onChange={handleChange}
                       name="message"
                       placeholder="Your Message"
                       rows={6}
                       resize="none"
+                      value={values.message}
                     />
                   </FormControl>
 
                   <Button
+                    onClick={handleEmailSend}
                     colorScheme="blue"
                     bg="blue.400"
                     color="white"
