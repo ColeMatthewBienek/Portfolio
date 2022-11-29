@@ -1,20 +1,19 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home.jsx";
+import Contact from "./components/Contact.jsx";
+import About from "./components/About.jsx";
+import Resume from "./components/Resume.jsx";
+import SampleProjects from "./components/SampleProjects.jsx";
 
-// export default function App() {
-//   return(
-//     <h1>react-app-template</h1>
-//   )
-// };
-
-const App = () => (
-  <h1>react-app-template</h1>
-);
-
-export default App;
-
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/resume" element={<Resume />} />
+      <Route path="/samples" element={<SampleProjects />} />
+    </Routes>
+  );
+}
