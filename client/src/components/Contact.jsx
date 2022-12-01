@@ -16,6 +16,11 @@ import {
   useClipboard,
   useColorModeValue,
   VStack,
+  Container,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
@@ -78,11 +83,15 @@ export default function Contact() {
       justify="center"
       css={{}}
       id="contact"
+      maxH={{ base: "75vh", md: "100vh" }}
+      minW={{ base: "100vw" }}
     >
       <Box
         borderRadius="lg"
-        m={{ base: 5, md: 16, lg: 10 }}
-        p={{ base: 5, lg: 16 }}
+        m={{ base: 2, md: 16, lg: 10 }}
+        p={{ base: 2, lg: 16 }}
+        minW={{ base: "100vw" }}
+        maxH={{ base: "75vh", md: "100vh" }}
       >
         <Box>
           <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
@@ -148,19 +157,13 @@ export default function Contact() {
               <Box
                 bg={useColorModeValue("white", "gray.700")}
                 borderRadius="lg"
-                p={8}
+                p={{ base: "2", md: "5" }}
                 color={useColorModeValue("gray.700", "whiteAlpha.900")}
                 shadow="base"
+                minW={{ base: "100vw", md: "50vw" }}
               >
                 <VStack spacing={5}>
-                  <Heading
-                    fontSize={{
-                      base: "4xl",
-                      md: "5xl",
-                    }}
-                  >
-                    Contact
-                  </Heading>
+                  <Heading>Contact</Heading>
                   <FormControl isRequired>
                     <FormLabel>Name</FormLabel>
 

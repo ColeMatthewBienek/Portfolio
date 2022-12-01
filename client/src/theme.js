@@ -6,7 +6,9 @@ const appTheme = {
   },
   styles: {
     global: {
-      "html, body": {},
+      "html, body": {
+        fontSize: "24px",
+      },
     },
   },
 };

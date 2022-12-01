@@ -40,6 +40,8 @@
   "dependencies": {
     "-": "^0.0.1",
     "@chakra-ui/color-mode": "^2.1.10",
+    "@chakra-ui/css-reset": "^2.0.10",
+    "@chakra-ui/media-query": "^3.2.8",
     "@chakra-ui/react": "^2.4.1",
     "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.10.5",

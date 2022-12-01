@@ -8,6 +8,7 @@ import {
   VStack,
   useBreakpointValue,
   Link,
+  Box,
   Spacer,
   ExternalLinkIcon,
 } from "@chakra-ui/react";
@@ -16,16 +17,14 @@ import { useColorMode } from "@chakra-ui/color-mode";
 function ToggleMode() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <header>
+    <Box>
       <Button
-        fontSize={{ md: "2em", lg: "1em" }}
-        size={{ md: "lg", lg: "sm" }}
+        size={{ base: "sm", md: "md", lg: "sm" }}
         onClick={toggleColorMode}
-        p={{ md: "6", lg: "4" }}
       >
         {colorMode === "light" ? "Dark" : "Light"}
       </Button>
-    </header>
+    </Box>
   );
 }
 
@@ -33,7 +32,8 @@ export default function Home() {
   return (
     <Flex
       flexDirection={"column"}
-      p={{ md: "10", lg: "14" }}
+      p={{ base: "2", lg: "12" }}
+      paddingBottom={{ base: "14" }}
       w={"full"}
       h={"100vh"}
       backgroundImage={
@@ -52,51 +52,55 @@ export default function Home() {
       <Text
         color={"white"}
         fontWeight={700}
-        fontSize={{ md: "8em", lg: "4em" }}
+        fontSize={{ base: "1rem", md: "2rem", lg: "3rem" }}
         lineHeight={1.2}
       >
         Cole Bienek
       </Text>
+      <br />
       <Text
         color={"white"}
         fontWeight={700}
         lineHeight={1.2}
-        fontSize={{ base: "8em", md: "3em" }}
+        fontSize={{ base: ".75rem", md: "1.25rem", lg: "2rem" }}
       >
         Full Stack Software Engineering With a Heart of Creativity
       </Text>
       <Spacer />
-      <Stack direction={{ xl: "row", md: "column" }}>
+      <Stack spacing="8px" direction={{ base: "column", lg: "row" }}>
         <Link
-          fontSize={{ md: "4em", lg: "2em" }}
+          fontSize={{ base: "1rem", md: "2rem", lg: "2rem" }}
           as={ReactRouterLink}
           to="/about"
+          _hover={{ color: "#BB8FCE" }}
         >
           About -
         </Link>
         <Link
-          fontSize={{ md: "4em", lg: "2em" }}
+          fontSize={{ base: "1rem", md: "2rem", lg: "2rem" }}
           as={ReactRouterLink}
           to="/contact"
+          _hover={{ color: "#BB8FCE" }}
         >
           Contact -
         </Link>
         <Link
-          fontSize={{ md: "4em", lg: "2em" }}
+          fontSize={{ base: "1rem", md: "2rem", lg: "2rem" }}
           as={ReactRouterLink}
           to="/resume"
+          _hover={{ color: "#BB8FCE" }}
         >
           Curriculum Vitae -
         </Link>
         <Link
-          fontSize={{ md: "4em", lg: "2em" }}
+          fontSize={{ base: "1rem", md: "2rem", lg: "2rem" }}
           as={ReactRouterLink}
           to="/samples"
+          _hover={{ color: "#BB8FCE" }}
         >
           Projects -
         </Link>
       </Stack>
-      <Spacer />
     </Flex>
   );
 }
