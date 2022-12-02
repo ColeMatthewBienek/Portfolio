@@ -39,7 +39,6 @@ export default function AboutItems({
           mb={4}
           fontSize={{ base: "2xl", md: "4xl" }}
           fontWeight="bold"
-          letterSpacing="tight"
           textAlign={{ base: "center", md: "left" }}
           color="gray.900"
           _dark={{ color: "gray.400" }}
@@ -79,7 +78,11 @@ export default function AboutItems({
         </Accordion>
       </Box>
       <Box>
-        <Image src={image} objectFit="cover" borderRadius="full" />
+        <Image
+          src={image}
+          objectFit="cover"
+          borderRadius={keyPoint === "Creativity and Heart" ? 6 : "full"}
+        />
       </Box>
     </SimpleGrid>
   );

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-import { Box, Button, chakra, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Box, Stack, Button, chakra, Flex, SimpleGrid } from "@chakra-ui/react";
 import data from "../../../sampleData/aboutData.js";
 import AboutItems from "./AboutItems.jsx";
+import { Link as ReactRouterLink } from "react-router-dom";
+import Links from "./Links.jsx";
 
 const About = () => {
   const [isOdd, setIsOdd] = useState(false);
@@ -10,11 +12,24 @@ const About = () => {
   return (
     <Flex
       minW={{ base: "100vw", md: "100vw" }}
+      flexDirection="column"
       // _dark={{ bg: "#3e3e3e" }}
       justifyContent="center"
       alignItems="center"
       pos="absolute"
     >
+      <Box
+        width="100vw"
+        _dark={{ bg: "#3e3e3e" }}
+        _light={{ bg: "#E5E7E9", color: "#111111" }}
+        position="sticky"
+        top="0px"
+        p="2"
+        textAlign="center"
+      >
+        <Links />
+      </Box>
+
       <Box
         shadow="xl"
         // bg="white"
