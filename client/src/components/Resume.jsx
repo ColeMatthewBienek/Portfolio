@@ -18,6 +18,7 @@ import {
   useClipboard,
   useColorModeValue,
   VStack,
+  Image,
   Container,
   Card,
   CardHeader,
@@ -27,9 +28,9 @@ import {
 import myFile from "../assets/files/ColeBienek_12-2-2022.pdf";
 import Links from "./Links.jsx";
 import { useState } from "react";
-import { Document, Page } from "react-pdf";
+
 import { pdfjs } from "react-pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import resumePic from "../assets/files/resumePic.jpg";
 
 function Resume() {
   const [numPages, setNumPages] = useState(null);
@@ -47,25 +48,43 @@ function Resume() {
         top="0px"
         p="2"
         textAlign="center"
+        zIndex="1001"
       >
         <Links />
       </Box>
-      <Document
-        file={myFile}
-        onLoadSuccess={onDocumentLoadSuccess}
-        onLoadError={console.error}
-        className="pdf-document"
+
+      <Flex
+        maxH={{ base: "75vh", md: "100vh" }}
+        minW={{ base: "100vw" }}
+        align="center"
+        justify="center"
+        p={{ base: "4", md: "6" }}
+        marginTop={{ base: "6" }}
       >
-        <Page pageNumber={pageNumber} />
-        {/* {Array.from(new Array(numPages), (el, index) => (
-          <Page
-            key={`page_${index + 1}`}
-            className="pdf-page"
-            pageNumber={index + 1}
-            width="200"
+        <Stack
+          p={{ base: "6", md: "10" }}
+          direction={{ base: "column", md: "row" }}
+        >
+          <Box>
+            <a
+              href={myFile}
+              without="false"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Button variant="ghost" size={{ base: "sm", md: "md" }}>
+                Open PDF
+              </Button>
+            </a>
+          </Box>
+
+          <Image
+            boxSize={{ base: "sm", md: "md" }}
+            objectFit="contain"
+            src={resumePic}
           />
-        ))} */}
-      </Document>
+        </Stack>
+      </Flex>
     </React.Fragment>
   );
 }
