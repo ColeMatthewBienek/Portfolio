@@ -8,7 +8,7 @@ import Links from "./Links.jsx";
 
 const About = () => {
   const [isOdd, setIsOdd] = useState(false);
-  console.log(data);
+
   return (
     <Flex
       minW={{ base: "100vw", md: "100vw" }}

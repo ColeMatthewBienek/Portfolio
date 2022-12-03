@@ -12,7 +12,7 @@ const root = createRoot(container);
 
 // the render method actually will insert our app into the DOM (which will cause it to render)
 root.render(
-  <BrowserRouter>
+  <BrowserRouter forceRefresh={true}>
     <App />
   </BrowserRouter>
 );

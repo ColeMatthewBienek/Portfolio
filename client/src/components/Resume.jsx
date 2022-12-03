@@ -25,12 +25,12 @@ import {
   CardBody,
   CardFooter,
 } from "@chakra-ui/react";
-import myFile from "../assets/files/ColeBienek_12-2-2022.pdf";
+import myFile from "../assets/files/ColeBienek_resume.pdf";
 import Links from "./Links.jsx";
 import { useState } from "react";
 
 import { pdfjs } from "react-pdf";
-import resumePic from "../assets/files/resumePic.jpg";
+import resumePic from "../assets/files/ColeBienek_resume.jpg";
 
 function Resume() {
   const [numPages, setNumPages] = useState(null);

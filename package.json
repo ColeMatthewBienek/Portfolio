@@ -4,6 +4,7 @@
   "description": "basic react app template",
   "main": "index.js",
   "scripts": {
+    "build-production": "webpack build --config ./webpack.config.js --mode production",
     "build": "webpack build --config ./webpack.config.js --mode development --watch",
     "react-dev-serve": "webpack serve --config ./webpack.config.js --mode development",
     "start": "nodemon  /server ./server/server.js",

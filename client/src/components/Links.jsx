@@ -24,14 +24,6 @@ function Links() {
       <Link
         fontSize={{ base: ".5rem", md: ".75rem", lg: ".75rem" }}
         as={ReactRouterLink}
-        to="/contact"
-        _hover={{ color: "#BB8FCE" }}
-      >
-        Contact
-      </Link>
-      <Link
-        fontSize={{ base: ".5rem", md: ".75rem", lg: ".75rem" }}
-        as={ReactRouterLink}
         to="/resume"
         _hover={{ color: "#BB8FCE" }}
       >

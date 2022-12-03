@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -15,19 +15,37 @@ import {
   Textarea,
   Tooltip,
   useClipboard,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
   useColorModeValue,
   VStack,
   Container,
   Card,
+  Image,
   CardHeader,
   CardBody,
   CardFooter,
+  chakra,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import Links from "./Links.jsx";
-
+import projects from "../../../sampleData/projectData.js";
+import Project from "./Project.jsx";
 function SampleProjects() {
+  const [isOdd, setIsOdd] = useState(false);
+
   return (
-    <React.Fragment>
+    <Flex
+      minW={{ base: "100vw", md: "100vw" }}
+      flexDirection="column"
+      // _dark={{ bg: "#3e3e3e" }}
+      justifyContent="center"
+      alignItems="center"
+      pos="absolute"
+    >
       <Box
         width="100vw"
         _dark={{ bg: "#3e3e3e" }}
@@ -39,7 +57,31 @@ function SampleProjects() {
       >
         <Links />
       </Box>
-    </React.Fragment>
+
+      <Box
+        shadow="xl"
+        // bg="white"
+        // _dark={{ bg: "gray.800" }}
+        px={8}
+        py={20}
+        mx="auto"
+        minW={{ base: "100vw", md: "100vw" }}
+      >
+        {projects.map((item, index) => {
+          return (
+            <Project
+              key={index}
+              title={item.title}
+              shortDescription={item.shortDescription}
+              mediaURL={item.mediaURL}
+              longDescription={item.longDescription}
+              gitHubLinks={item.gitHubLinks}
+              count={index + 1}
+            />
+          );
+        })}
+      </Box>
+    </Flex>
   );
 }
 
