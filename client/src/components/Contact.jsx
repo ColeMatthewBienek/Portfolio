@@ -53,6 +53,7 @@ export default function Contact() {
       [senderName]: fieldValue,
     });
   };
+
   const handleEmailSend = (e) => {
     e.preventDefault();
     emailjs
@@ -65,6 +66,7 @@ export default function Contact() {
           message: "",
         });
         setStatus("Success");
+        
       })
       .catch(console.log);
   };
